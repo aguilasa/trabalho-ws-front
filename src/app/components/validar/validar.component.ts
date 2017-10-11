@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-declare var jQuery: any;
-
 @Component({
   selector: 'app-validar',
   templateUrl: './validar.component.html',
@@ -10,14 +8,15 @@ declare var jQuery: any;
 export class ValidarComponent implements OnInit {
 
   cpf: string = '';
-  show: boolean = true;
+  error: boolean = false;
+  success: boolean = false;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  validar() {
+  validate() {
     return false;
   }
 
@@ -25,11 +24,12 @@ export class ValidarComponent implements OnInit {
     return this.cpf !== '' && this.cpf.length > 1;
   }
 
-  outro() {
-    this.show = !this.show;
-    this.show ? jQuery('#erro').show() : jQuery('#erro').hide();
+  closeError() {
+    this.error = false;
   }
 
-
+  closeSuccess() {
+    this.success = false;
+  }
 
 }
