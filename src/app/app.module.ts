@@ -2,12 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { MaskDirective } from './directive/mask.directive';
+import { CpfMaskDirective } from './directives/cpf-mask.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MaskDirective
+    CpfMaskDirective
   ],
   imports: [
     BrowserModule
