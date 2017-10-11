@@ -20,10 +20,10 @@
       </button>
       <strong>Erro!</strong> CPF inválido. </div>
 
-      <div class="alert alert-success alert-dismissible fade in" role=alert>
-        <button type=button class=close aria-label=Close (click)="closeSuccess()">
-          <span aria-hidden=true>&times;</span>
-        </button>
-        <strong>Sucesso!</strong> CPF válido. </div>
+    <div *ngIf="success == true" class="alert alert-success alert-dismissible fade in" role=alert>
+      <button type=button class=close aria-label=Close (click)="closeSuccess()">
+        <span aria-hidden=true>&times;</span>
+      </button>
+      <strong>Sucesso!</strong> CPF válido. </div>
   </div>
 </div>

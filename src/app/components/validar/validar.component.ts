@@ -23,7 +23,8 @@ export class ValidarComponent implements OnInit {
     this.svc
       .validate(this.model)
       .subscribe(result => {
-        console.log(result);
+        this.error = result.result === '0';
+        this.success = !this.error;
       })
   }
 
