@@ -10,7 +10,6 @@ export class CpfMaskDirective {
   public nativeElement: HTMLInputElement;
 
   constructor(public element: ElementRef, public render: Renderer) {
-    console.log(element);
     this.nativeElement = this.element.nativeElement;
     VMasker(this.nativeElement).maskPattern('999.999.999-99');
   }
