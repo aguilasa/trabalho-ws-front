@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ValidarCpfService } from '../../services/validar-cpf.service';
+
+import { CpfModel } from '../../models/cpf-model';
 
 @Component({
   selector: 'app-validar',
@@ -7,21 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ValidarComponent implements OnInit {
 
-  cpf: string = '';
+  model: CpfModel = new CpfModel('');
   error: boolean = false;
   success: boolean = false;
 
-  constructor() { }
+  constructor(private svc: ValidarCpfService) { }
 
   ngOnInit() {
   }
 
   validate() {
-    return false;
+    this.svc
+      .validate(this.model)
+      .subscribe(result => {
+        console.log(result);
+      })
   }
 
   isValidForm() {
-    return this.cpf !== '' && this.cpf.length > 1;
+    return this.model.cpf !== '' && this.model.cpf.length > 1;
   }
 
   closeError() {
