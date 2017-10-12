@@ -11,8 +11,8 @@ import { CpfModel } from '../../models/cpf-model';
 export class ValidarComponent implements OnInit {
 
   model: CpfModel = new CpfModel('');
-  error: boolean = false;
-  success: boolean = false;
+  error = false;
+  success = false;
 
   constructor(private svc: ValidarCpfService) { }
 
@@ -25,7 +25,7 @@ export class ValidarComponent implements OnInit {
       .subscribe(result => {
         this.error = result.result === '0';
         this.success = !this.error;
-      })
+      });
   }
 
   isValidForm() {
@@ -38,6 +38,15 @@ export class ValidarComponent implements OnInit {
 
   closeSuccess() {
     this.success = false;
+  }
+
+  reset() {
+    this.error = false;
+    this.success = false;
+  }
+
+  onKey(event: any) {
+    this.reset();
   }
 
 }
