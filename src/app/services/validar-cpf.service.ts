@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { Response, Http } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
 
 import { CpfModel } from '../models/cpf-model';
 
@@ -13,7 +13,10 @@ export class ValidarCpfService {
 
   public validate(cpf: CpfModel) {
     return this.http.post(URL, cpf)
-      .map(res => res.json());
+      .map((res: Response) => res.json())
+      .catch((err) => {
+        return Observable.throw(err);
+      });
   }
 
 }

@@ -25,5 +25,11 @@
         <span aria-hidden=true>&times;</span>
       </button>
       <strong>Sucesso!</strong> CPF válido. </div>
+
+      <div *ngIf="serverError == true" class="alert alert-danger alert-dismissible fade in" role=alert>
+        <button type=button class=close aria-label=Close (click)="closeServerError()">
+          <span aria-hidden=true>&times;</span>
+        </button>
+        <strong>Erro!</strong> Problemas ao acessar o servidor de validação. </div>
   </div>
 </div>

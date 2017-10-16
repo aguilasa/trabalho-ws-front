@@ -13,6 +13,7 @@ export class ValidarComponent implements OnInit {
   model: CpfModel = new CpfModel('');
   error = false;
   success = false;
+  serverError = false;
 
   constructor(private svc: ValidarCpfService) { }
 
@@ -25,6 +26,9 @@ export class ValidarComponent implements OnInit {
       .subscribe(result => {
         this.error = result.result === '0';
         this.success = !this.error;
+        this.serverError = false;
+      }, err => {
+        this.showServerError();
       });
   }
 
@@ -40,13 +44,22 @@ export class ValidarComponent implements OnInit {
     this.success = false;
   }
 
+  closeServerError() {
+    this.serverError = false;
+  }
+
   reset() {
     this.error = false;
     this.success = false;
+    this.serverError = false;
   }
 
   onKey(event: any) {
     this.reset();
+  }
+
+  showServerError() {
+    this.serverError = true;
   }
 
 }
